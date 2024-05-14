@@ -1,0 +1,62 @@
+{% extends 'base.html' %} <!-- Extend base.html template -->
+
+{% load static %} <!-- Load static files -->
+
+{% block content %} <!-- Begin content block -->
+<html>
+    <head>
+        <title>Interact & Manage</title>
+    </head>
+    <script>
+        function selectButton(element) { <!-- JavaScript function to handle button selection -->
+            var buttons = element.parentElement.getElementsByClassName("btn"); <!-- Get all buttons within the same parent element -->
+            for (var i = 0; i < buttons.length; i++) { <!-- Loop through each button -->
+                buttons[i].classList.remove("active"); <!-- Remove the "active" class from each button -->
+            }
+            element.classList.add("active"); <!-- Add the "active" class to the clicked button -->
+        }
+        function check_selected(){ <!-- JavaScript function to check if required fields are selected -->
+            var dirinput = document.querySelector('input[name="direction"]:checked'); <!-- Get the checked direction input -->
+            var chaninput = document.querySelector('input[name="channel"]:checked'); <!-- Get the checked channel input -->
+            var summary = document.querySelector('textarea[name="summary"]').value; <!-- Get the value of the summary textarea -->
+            if (!dirinput || !chaninput || summary === ""){ <!-- Check if any of the required fields are empty -->
+                alert("Please fill all required fields"); <!-- Alert the user to fill all required fields -->
+                return false; <!-- Return false to prevent form submission -->
+            }
+            return true; <!-- Return true if all required fields are filled -->
+        }
+    </script>
+    <body>
+        <h1>Interact With Your Customers</h1> <!-- Heading for the form -->
+        <form class="form" method="post"  onsubmit="return check_selected()" action="#"> <!-- Form for interaction -->
+            {% csrf_token %} <!-- CSRF token -->
+            <div class="form-group">
+                <label>Channel</label> <!-- Label for channel selection -->
+                <div class="btn-group" data-toggle="buttons"> <!-- Button group for channel selection -->
+                    {% for channel in channels %} <!-- Loop through channel choices -->
+                        <label class="btn btn-outline-primary" onclick="selectButton(this)"> <!-- Label for each channel choice -->
+                            <input type="radio" name="channel" value="{{ channel.0 }}" required> {{ channel.1 }} <!-- Radio button for channel choice -->
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Direction</label> <!-- Label for direction selection -->
+                <div class="btn-group" data-toggle="buttons"> <!-- Button group for direction selection -->
+                    {% for direction in directions %} <!-- Loop through direction choices -->
+                        <label class="btn btn-outline-primary" onclick="selectButton(this)"> <!-- Label for each direction choice -->
+                            <input type="radio" name="direction" value="{{ direction.0 }}" required> {{ direction.1 }} <!-- Radio button for direction choice -->
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Summary</label> <!-- Label for summary input -->
+                <textarea name="summary"></textarea> <!-- Textarea for summary input -->
+            </div>
+            <button type="submit" class="btn btn-success">Save Interaction</button> <!-- Submit button -->
+            <p>{{ msg }}<p> <!-- Message for displaying any feedback -->
+        </form>
+    </body>
+</html>
+{% endblock content %} <!-- End content block -->

@@ -1,0 +1,34 @@
+{% extends 'base.html' %} <!-- Extend base.html template -->
+
+{% load static %} <!-- Load static files -->
+
+{% block content %} <!-- Begin content block -->
+<html>
+    <body>
+        <h1> Interactions in last 30 Days  </h1> <!-- Heading for the page -->
+        {% if not interactions %} <!-- Check if there are no interactions -->
+            <p> there are no interactions in the last 30 days <p> <!-- Display message if no interactions -->
+        {% else %}
+            <table class="table"> <!-- Table to display interactions -->
+                <thead>
+                    <tr>
+                        <th>Channel</th> <!-- Table header for channel -->
+                        <th>Direction</th> <!-- Table header for direction -->
+                        <th>Count</th> <!-- Table header for count -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for interaction in interactions %} <!-- Loop through interactions -->
+                        <tr>
+                            <td>{{ interaction.channel }}</td> <!-- Display channel -->
+                            <td>{{ interaction.direction }}</td> <!-- Display direction -->
+                            <td> {{ interaction.count }} </td> <!-- Display count -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <h4> Total : {{ count }} </h4> <!-- Display total count -->
+        {% endif %}
+    </body>
+</html>
+{% endblock content %} <!-- End content block -->

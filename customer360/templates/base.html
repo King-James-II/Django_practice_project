@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Load Bootstrap CSS from CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- Load Bootstrap JS from CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- Load main.css from static files -->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a style="color:black;" href="/">Home</a> <!-- Link to home page -->
+                </li>
+                <li>
+                    <a  style="color:black;" href="/create">New Customer</a> <!-- Link to create a new customer page -->
+                </li>
+                <li>
+                    <a style="color:black;" href="/summary">Summary</a> <!-- Link to summary page -->
+                </li>
+            </ul>
+        </nav>
+        <!-- Content block -->
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,81 @@
+body{
+    text-align: center; /* Align text to center */
+    margin: auto; /* Center the content horizontally */
+}
+
+h1, p {
+    font-weight: bold; /* Set font weight to bold for h1 and p elements */
+}
+
+table {
+    margin: auto; /* Center the table horizontally */
+    border: 2px solid #000000; /* Set border to 2px solid black */
+    margin-top: 50px; /* Add top margin */
+    border-radius: 15px; /* Add border radius */
+    background-color: white; /* Set background color to white */
+    text-align: center; /* Align text to center */
+}
+
+th {
+    text-align: center; /* Align text in table header to center */
+}
+
+.nav {
+    width: 200%; /* Set width to 200% */
+    border: 2px solid black; /* Set border to 2px solid black */
+    border-radius: 10px; /* Add border radius */
+}
+
+.nav li {
+    margin-right: 6%; /* Set right margin */
+    margin-left: 6%; /* Set left margin */
+    font-size: large; /* Set font size to large */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.form {
+    margin: auto; /* Center the form horizontally */
+    margin-top: 20px; /* Add top margin */
+    background-color: white; /* Set background color to white */
+    text-align: center; /* Align text to center */
+    width: 50%; /* Set width to 50% */
+    height: 50%; /* Set height to 50% */
+    border: 2px solid black; /* Set border to 2px solid black */
+    border-radius: 10px; /* Add border radius */
+}
+
+.form-group {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Set flex direction to column */
+    align-items: flex-start; /* Align items to flex-start */
+    width: 100%; /* Set width to 100% */
+    padding: 10px; /* Add padding */
+    text-align: left; /* Align text to left */
+    margin-top: 10px; /* Add top margin */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%; /* Set width to 100% */
+}
+
+textarea {
+    width: 500px; /* Set width to 500px */
+    height: 200px; /* Set height to 200px */
+}
+
+.btn {
+    display: flex; /* Use flexbox */
+    margin-top: 10px; /* Add top margin */
+    margin-bottom: 10px; /* Add bottom margin */
+    padding-left: 50px; /* Add left padding */
+    padding-right: 50px; /* Add right padding */
+    text-align: left; /* Align text to left */
+    margin-left: 10px; /* Add left margin */
+}
+
+.active {
+    background-color: #007bff; /* Set background color to blue */
+    color: #fff; /* Set text color to white */
+}

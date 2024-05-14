@@ -1,0 +1,58 @@
+{% extends 'base.html' %} <!-- Extend base.html template -->
+
+{% load static %} <!-- Load static files -->
+
+{% block content %} <!-- Begin content block -->
+<html>
+    <head>
+        <title>Home Page</title> <!-- Title for the page -->
+    </head>
+    <script>
+       // JavaScript function to set the selected customer and redirect to interaction page
+       function set_customer(){
+        var cinput = document.querySelector('input[name="selected_customers"]:checked');
+            if (cinput){
+                cid = cinput.value;
+                window.location = "/interact/"+cid; // Redirect to interact page with customer ID
+            }
+            else
+                alert("Please select a customer"); // Alert if no customer is selected
+       }
+    </script>
+    <body>
+        <h1>Welcome to Customer 360</h1> 
+        <p>Interact and Manage your Customers</p>
+        <!-- Interact button -->
+        <a class="btn btn-primary" style="font-weight:bold; display:inline" onclick="set_customer()">Interact</a>
+        <!-- Customer table -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Social Media</th>
+                    <th>Selected</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %} <!-- Iterate through customers -->
+                    <tr>
+                        <td>{{customer.id }}</td> <!-- Display customer ID -->
+                        <td>{{customer.name }}</td> <!-- Display customer name -->
+                        <td>{{customer.email }}</td> <!-- Display customer email -->
+                        <td>{{customer.phone }}</td> <!-- Display customer phone -->
+                        <td>{{customer.address }}</td> <!-- Display customer address -->
+                        <td>{{customer.social_media }}</td> <!-- Display customer social media -->
+                        <td>
+                            <input type="radio" name="selected_customers" value="{{ customer.id }}"> <!-- Radio button to select customer -->
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
+{% endblock content %} <!-- End content block -->
